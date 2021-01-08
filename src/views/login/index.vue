@@ -101,6 +101,19 @@ export default {
         if (valid) {
           this.loading = true
           // 发送请求以登录
+          // 调用vuex中的异步函数Login，用于登录
+          // 需要传入当前表单数据
+          this.$store
+            .dispatch('user/login', this.loginForm)
+            .then(() => {
+              // 登录成功
+              this.loading = false
+              this.$router.push({ path: this.redirect || '/' })
+            })
+            .catch(() => {
+              // 登录失败
+              this.loading = false
+            })
         } else {
           // 表单验证失败
           console.log('error submit!!')
@@ -112,9 +125,9 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 // 背景渐变颜色
-@color: rgba(6, 214, 160, 0.5) 25%, rgba(0, 126, 167, 0.5) 25%,
+$color: rgba(6, 214, 160, 0.5) 25%, rgba(0, 126, 167, 0.5) 25%,
   rgba(0, 126, 167, 0.5) 50%, rgba(6, 214, 160, 0.5) 50%,
   rgba(6, 214, 160, 0.5) 75%, rgba(0, 126, 167, 0.5) 70%,
   rgba(0, 126, 167, 0.5) 100%;
@@ -124,8 +137,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: -webkit-linear-gradient(45deg, @color),
-    -webkit-linear-gradient(-45deg, @color);
+  background-image: -webkit-linear-gradient(45deg, $color),
+    -webkit-linear-gradient(-45deg, $color);
   background-size: 66px 66px;
   .login-form {
     width: 520px;

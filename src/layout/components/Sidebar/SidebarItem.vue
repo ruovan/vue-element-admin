@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebaritem-container">
+  <div class="sidebar-item-container" v-if="!item.hidden">
     <!-- 判断是否只有一个子菜单项 -->
     <!--
         当
@@ -116,4 +116,12 @@ export default {
 }
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="scss">
+.sidebar-item-container {
+  i {
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+}
+</style>

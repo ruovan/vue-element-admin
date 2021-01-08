@@ -10,13 +10,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 国际化：lang i18n
 // import locale from 'element-ui/lib/locale/lang/en'
 // 导入全局样式
-// import '@/styles/index.scss'
+import '@/styles/index.scss'
 // 导入图标样式
 // import '@/icons'
 // 导入permission，用于设置路由守卫、权限等
 // import '@/permission'
-// 导入全局样式
-import '@/styles/global.less'
 /**
  * 如果你不想使用模拟服务器 mock-server
  * 您想将MockJs用于mock api

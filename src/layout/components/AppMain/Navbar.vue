@@ -1,6 +1,6 @@
 <template>
   <div class="navbar-container">
-    <span class="hamburger-container">
+    <span class="hamburger-container" @click="toggleSideBar">
       <i v-if="isCollapse" class="el-icon-s-fold"></i>
       <i v-else class="el-icon-s-unfold"></i>
     </span>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 export default {
   name: 'Navbar',
@@ -43,28 +44,32 @@ export default {
     Breadcrumb
   },
   data() {
-    return {
-      avatar: ''
-    }
+    return {}
   },
   methods: {
     // 切换侧边栏状态
     toggleSideBar() {
       // 点击切换侧边栏折叠、展开
+      this.$store.dispatch('app/toggleSideBar')
     },
     // 退出登录
     async logout() {
       // 发起退出登录请求
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
     // 判断侧边栏是否折叠
     isCollapse() {
-      return false
+      return !this.sidebar.opened
     }
+  },
+  computed: {
+    ...mapGetters(['sidebar', 'avatar'])
   }
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .navbar-container {
   height: 50px;
   overflow: hidden;
