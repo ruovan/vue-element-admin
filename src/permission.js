@@ -7,24 +7,24 @@ import store from './store'
 import NProgress from 'nprogress'
 // Progress 进度条样式
 import 'nprogress/nprogress.css'
-import { Message } from 'element-ui'
+import { Message, Notification } from 'element-ui'
 import { getToken } from '@/utils/auth'
-import getPageTitle from '@/utils/get-page-title'
+// import getPageTitle from '@/utils/get-page-title'
 
 // NProgress设置
 NProgress.configure({ showSpinner: false })
 // 不重定向白名单，即用户无需登录即可访问的页面
-const whiteList = ['/login', '/dashaboard', '/example', '/form']
+const whiteList = ['/login']
+// const whiteList = ['/login', '/dashaboard', '/example', '/form']
 
 // 路由守卫
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
   // 设置页面标题
-  document.title = getPageTitle(to.meta.title)
+  // document.title = getPageTitle(to.meta.title)
 
   // 用于判断用户是否登录
   const hasToken = getToken()
-
   if (hasToken) {
     // ，有token值，表示用户登录了
     if (to.path === '/login') {
@@ -34,15 +34,15 @@ router.beforeEach(async (to, from, next) => {
       NProgress.done() // afterEach hook, so manually handle it
     } else {
       // 如果去其它页面
-      // 获取vuex中的 角色名
+      // 获取vuex中的 角色权限
       const hasGetUserInfo = store.getters.name
       if (hasGetUserInfo) {
-        // 有角色
+        // 有角色权限
         next()
       } else {
-        // 没有角色
+        // 没有角色权限
         try {
-          // 尝试重新获取用户信息
+          // 则尝试重新获取用户信息
           // dispatch 用于调用vuex中actions中的异步函数
           await store.dispatch('user/getInfo')
           // 获取成功后则放行访问
@@ -62,13 +62,19 @@ router.beforeEach(async (to, from, next) => {
       // 如果用户点击跳转的页面在白名单中，则直接放行
       next()
     } else {
-      // 如果没有在白名单中，则重定向到登陆页
+      // 如果没有在白名单中，则先重定向到登陆页，将要访问的地址也传入
       next(`/login?redirect=${to.path}`)
+      // next('/login')
       NProgress.done()
     }
   }
 })
 // 在路由跳转之后
-router.afterEach(() => {
+router.afterEach((to, from) => {
+  Notification.info({
+    title: '路由加载',
+    message: '当前路由：' + to.path,
+    position: 'bottom-right'
+  })
   NProgress.done() // 结束Progress
 })

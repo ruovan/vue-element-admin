@@ -6,8 +6,8 @@ import { getToken } from '@/utils/auth'
 // 创建axios实例
 const request = axios.create({
   // 设置基准地址，最后的请求地址 url = baseURL + requestURL
-  // baseURL: process.env.VUE_APP_BASE_API,
-  baseURL: '/dev-api',
+  baseURL: process.env.VUE_APP_BASE_API,
+  // baseURL: '/dev-api',
   // 请求超时时间
   timeout: 5000
 })
@@ -15,6 +15,7 @@ const request = axios.create({
 // request拦截器
 request.interceptors.request.use(
   config => {
+    // console.log(process.env)
     // 是否已登录，判断是否有 token 值
     if (store.getters.token) {
       // 让每个请求携带自定义token 请根据实际情况自行修改

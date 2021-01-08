@@ -37,11 +37,10 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/variables.scss';
 .app-main-container {
-  min-height: calc(100vh - 50px);
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 10px;
 
   .fixed-header {
     position: fixed;
@@ -52,18 +51,19 @@ export default {
     transition: width 0.28s;
   }
 
-  .hideSidebar .fixed-header {
-    width: calc(100% - 54px);
-  }
-
-  .mobile .fixed-header {
-    width: 100%;
-  }
   .fixed-header + .app-main {
-    padding-top: 50px;
+    min-height: calc(100vh - 50px);
+    margin-top: 50px;
+    padding: 15px;
   }
 }
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+}
 
+.mobile .fixed-header {
+  width: 100%;
+}
 // el-dialog修正
 .el-popup-parent--hidden {
   .fixed-header {

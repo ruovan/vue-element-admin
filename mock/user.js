@@ -40,7 +40,7 @@ module.exports = [
       const { username } = config.body
       // 根据登录的用户名 username 设置 token
       const token = tokens[username]
-      // mock数据请求错误
+      // 如果没有token，表示用户名不对，mock数据请求错误
       if (!token) {
         return {
           code: 60204,

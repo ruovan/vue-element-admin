@@ -20,10 +20,10 @@
           <router-link to="/">
             <el-dropdown-item>首页</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="javascript:;">
+          <a href="javascript:;">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <a target="_blank" href="javascript:;">
+          <a href="javascript:;">
             <el-dropdown-item>文档</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
@@ -54,7 +54,13 @@ export default {
     },
     // 退出登录
     async logout() {
+      console.log(this.name)
       // 发起退出登录请求
+      this.$notify.success({
+        title: '退出成功',
+        message: '注销账户:' + this.name,
+        position: 'top-left'
+      })
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
@@ -64,7 +70,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['sidebar', 'avatar'])
+    ...mapGetters(['sidebar', 'avatar', 'name'])
   }
 }
 </script>

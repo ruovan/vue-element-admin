@@ -63,6 +63,7 @@
     }
 
     .el-menu {
+      transition: 0.5s;
       border: none;
       height: 100%;
       width: 100% !important;
@@ -107,7 +108,6 @@
 
       .el-tooltip {
         padding: 0 !important;
-
         .svg-icon {
           margin-left: 20px;
         }

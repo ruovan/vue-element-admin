@@ -44,7 +44,7 @@
           type="primary"
           style="width:100%;"
           :loading="loading"
-          @click="onLogin"
+          @click.native="onLogin"
         >
           登录
         </el-button>
@@ -105,10 +105,15 @@ export default {
           // 需要传入当前表单数据
           this.$store
             .dispatch('user/login', this.loginForm)
-            .then(() => {
+            .then(async () => {
               // 登录成功
               this.loading = false
-              this.$router.push({ path: this.redirect || '/' })
+              await this.$router.push({ path: this.redirect || '/' })
+              this.$notify.success({
+                title: '登录成功',
+                message: '当前账户：' + this.$store.getters.name,
+                position: 'top-left'
+              })
             })
             .catch(() => {
               // 登录失败

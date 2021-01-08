@@ -55,7 +55,7 @@ export const constantRoutes = [
     path: '/login',
     component: () => import('@/views/login/index'),
     meta: { title: '登陆页', icon: 'el-icon-s-shop' },
-    hidden: false
+    hidden: true
   },
   // 首页路由 /dashboard
   {
@@ -125,6 +125,7 @@ export const constantRoutes = [
   {
     path: '*',
     component: Layout,
+    redirect: '/404',
     children: [
       {
         path: '/404',

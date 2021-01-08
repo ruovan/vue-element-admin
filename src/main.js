@@ -14,7 +14,7 @@ import '@/styles/index.scss'
 // 导入图标样式
 // import '@/icons'
 // 导入permission，用于设置路由守卫、权限等
-// import '@/permission'
+import '@/permission'
 /**
  * 如果你不想使用模拟服务器 mock-server
  * 您想将MockJs用于mock api
@@ -26,6 +26,7 @@ import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
+
 // 设置 ElementUI 为英语格式
 // Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
