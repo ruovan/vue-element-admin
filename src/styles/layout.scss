@@ -1,0 +1,373 @@
+// sidebar
+// 侧边栏菜单文字颜色
+$menuText: #bfcbd9;
+// 激活项文字颜色
+$menuActiveText: #409eff;
+// 子级菜单激活项文字颜色
+$subMenuActiveText: #f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+// 菜单背景色
+$menuBg: #2541b2;
+// 菜单悬浮背景色
+$menuHover: #1e3591;
+// 子项背景色
+$subMenuBg: #03256c;
+// 激活项背景色
+$activeBg: #1768ac;
+// 侧边框宽度
+$sideBarWidth: 210px;
+
+// Layout容器样式
+.layout-container {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  &.mobile.openSidebar {
+    position: fixed;
+    top: 0;
+  }
+}
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+#app {
+  // 右侧内容区域
+  .main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: $sideBarWidth;
+    position: relative;
+    .app-main-container {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      // 导航栏部分
+      .navbar-container {
+        height: 50px;
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        box-shadow: 0 1px 4px -2px #111;
+        // 展开图标
+        .hamburger-container {
+          line-height: 56px;
+          height: 100%;
+          float: left;
+          font-size: 26px;
+          padding-left: 10px;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+        // 面包屑导航栏
+        .breadcrumb-container {
+          float: left;
+        }
+        // 右侧菜单
+        .right-menu {
+          float: right;
+          height: 100%;
+          line-height: 50px;
+          &:focus {
+            outline: none;
+          }
+          // 右侧菜单项
+          .right-menu-item {
+            display: inline-block;
+            padding: 0 8px;
+            height: 100%;
+            font-size: 18px;
+            color: #5a5e66;
+            vertical-align: text-bottom;
+
+            &.hover-effect {
+              cursor: pointer;
+              transition: background 0.3s;
+
+              &:hover {
+                background: rgba(0, 0, 0, 0.025);
+              }
+            }
+          }
+          // 下拉菜单样式
+          .avatar-container {
+            margin-right: 30px;
+            // 头像
+            .avatar-wrapper {
+              margin-top: 5px;
+              position: relative;
+              // 图片
+              .user-avatar {
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+              }
+              // 下拉图标
+              .el-icon-caret-bottom {
+                cursor: pointer;
+                position: absolute;
+                right: -20px;
+                top: 25px;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+      // 内容显示部分
+      .app-main {
+        padding: 15px;
+      }
+      // 导航栏固定时的样式
+      .fixed-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9;
+        width: calc(100% - #{$sideBarWidth});
+        transition: width 0.28s;
+      }
+
+      // 导航栏固定时，下面内容的样式
+      .fixed-header + .app-main {
+        min-height: calc(100vh - 50px);
+        margin-top: 50px;
+        padding: 15px;
+      }
+      // el-dialog修正
+      .el-popup-parent--hidden {
+        .fixed-header {
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+  // 左侧导航菜单区域
+  .sidebar-container {
+    transition: width 0.28s;
+    width: $sideBarWidth !important;
+    background-color: $menuBg;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+    // 导航菜单项的图标大小
+    i {
+      color: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+
+    // reset element-ui css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+      overflow: auto;
+
+      // 滚动条样式
+      // 滚动条底层滚动槽
+      &::-webkit-scrollbar-track-piece {
+        background: #d3dce6;
+      }
+      // 滚动条整体样式
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      // 滚动条滑块
+      &::-webkit-scrollbar-thumb {
+        background: #1b78fc;
+        border-radius: 20px;
+      }
+    }
+
+    // 没有下一级的菜单项
+    .submenu-title-noDropdown,
+    .el-submenu__title {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+      // 激活项
+      &.is-active {
+        font-weight: bold;
+        background-color: $activeBg !important;
+      }
+    }
+
+    .is-active > .el-submenu__title {
+      color: $subMenuActiveText !important;
+      background-color: $activeBg !important;
+    }
+    // 嵌套的子项菜单项样式
+    & .nest-menu .el-submenu > .el-submenu__title,
+    & .el-submenu .el-menu-item {
+      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $menuHover !important;
+      }
+      // 激活项
+      &.is-active {
+        font-weight: bold;
+        background-color: $activeBg !important;
+      }
+    }
+  }
+  // 侧边栏折叠下的样式
+  .hideSidebar {
+    // 侧边栏
+    .sidebar-container {
+      width: 54px !important;
+      // 一级菜单项，无展开项菜单项的样式（没有子级）
+      .submenu-title-noDropdown {
+        padding: 0 !important;
+        position: relative;
+        .el-tooltip {
+          padding: 0 !important;
+          // 图标
+          i {
+            margin-left: 20px;
+          }
+        }
+      }
+      // 状态栏折叠下，有展开项菜单项的样式
+      .el-submenu {
+        overflow: hidden;
+        & > .el-submenu__title {
+          padding: 0 !important;
+          // 图标
+          i {
+            margin-left: 20px;
+          }
+          // 箭头
+          .el-submenu__icon-arrow {
+            display: none;
+          }
+        }
+      }
+      .el-menu--collapse {
+        // 有子级菜单项的导航菜单的标题设置为不可见
+        .el-submenu {
+          & > .el-submenu__title {
+            & > span {
+              height: 0;
+              width: 0;
+              overflow: hidden;
+              visibility: hidden;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+    // 主要内容区域
+    .main-container {
+      margin-left: 54px;
+      .fixed-header {
+        width: calc(100% - 54px);
+      }
+    }
+  }
+
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: $sideBarWidth !important;
+  }
+
+  // 手机设备的样式
+  .mobile {
+    .main-container {
+      margin-left: 0px;
+      .fixed-header {
+        width: 100%;
+      }
+    }
+
+    .sidebar-container {
+      transition: transform 0.28s;
+      width: $sideBarWidth !important;
+    }
+
+    &.hideSidebar {
+      .sidebar-container {
+        pointer-events: none;
+        transition-duration: 0.3s;
+        transform: translate3d(-$sideBarWidth, 0, 0);
+      }
+    }
+  }
+
+  .withoutAnimation {
+    .main-container,
+    .sidebar-container {
+      transition: none;
+    }
+  }
+}
+// 当侧边栏折叠时，鼠标悬浮菜单时显示的内容的样式
+.el-menu--vertical {
+  .nest-menu .el-submenu > .el-submenu__title,
+  .el-menu-item {
+    &:hover {
+      // you can use $subMenuHover
+      background-color: $menuHover !important;
+    }
+    // 激活项
+    &.is-active {
+      font-weight: bold;
+      background-color: $activeBg !important;
+    }
+  }
+
+  // the scroll bar appears when the subMenu is too long
+  > .el-menu--popup {
+    max-height: 100vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+}
+// 导航栏折叠·后，鼠标悬浮图标的提示项文字
+.el-tooltip__popper.is-dark {
+  background-color: lightblue;
+  // transition-delay: 1.5s;
+}
+// 提示框的箭头
+.el-tooltip__popper[x-placement^='top'] .popper__arrow:after {
+  border-top-color: lightblue;
+}
+.el-tooltip__popper[x-placement^='top'] .popper__arrow {
+  border-top-color: lightblue;
+}

@@ -7,10 +7,10 @@ module.exports = {
   /**
    * 是否固定头部导航栏区域
    */
-  fixedHeader: true,
+  fixedHeader: false,
 
   /**
    * 是否显示侧边栏logo
    */
-  sidebarLogo: true
+  sidebarLogo: false
 }

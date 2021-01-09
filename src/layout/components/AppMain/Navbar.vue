@@ -54,7 +54,6 @@ export default {
     },
     // 退出登录
     async logout() {
-      console.log(this.name)
       // 发起退出登录请求
       this.$notify.success({
         title: '退出成功',
@@ -75,56 +74,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.navbar-container {
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px -2px #111;
-
-  .hamburger-container {
-    line-height: 56px;
-    height: 100%;
-    float: left;
-    font-size: 26px;
-    padding-left: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .breadcrumb-container {
-    float: left;
-  }
-
-  .right-menu {
-    float: right;
-    height: 100%;
-    line-height: 50px;
-    // 下拉菜单样式
-    .avatar-container {
-      margin-right: 30px;
-      // 头像
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-        // 图片
-        .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-        // 下拉图标
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 16px;
-        }
-      }
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

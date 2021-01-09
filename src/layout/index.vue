@@ -6,11 +6,10 @@
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    <!-- 侧边栏 -->
+    <!-- 左侧：侧边栏区域 -->
     <sidebar class="sidebar-container" />
-    <!-- 内容区域 -->
+    <!-- 右侧：内容区域 -->
     <div class="main-container">
-      <!-- 主体内容 -->
       <app-main />
     </div>
   </div>
@@ -56,27 +55,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import '~@/styles/mixin.scss';
-@import '~@/styles/variables.scss';
-
-.layout-container {
-  @include clearfix;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  &.mobile.openSidebar {
-    position: fixed;
-    top: 0;
-  }
-}
-.drawer-bg {
-  background: #000;
-  opacity: 0.3;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  position: absolute;
-  z-index: 999;
-}
-</style>
+<style scoped lang="scss"></style>

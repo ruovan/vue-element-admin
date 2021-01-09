@@ -121,6 +121,7 @@ export const constantRoutes = [
       }
     ]
   },
+
   // Page404
   {
     path: '*',

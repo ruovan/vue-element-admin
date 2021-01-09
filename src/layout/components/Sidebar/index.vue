@@ -1,16 +1,18 @@
 <template>
-  <div class="sidebar">
+  <!-- sidebar-container -->
+  <div :class="{ 'has-logo': showLogo }">
     <!-- 侧边栏Logo -->
-    <sidebar-logo :collapse="isCollapse"></sidebar-logo>
+    <!-- 通过showLogo控制Logo是否展示，通过isCollapse控制logo显示（图标+标题） -->
+    <sidebar-logo v-if="showLogo" :collapse="isCollapse" />
     <!-- 侧边栏导航 -->
     <el-menu
       router
       :default-active="activeMenu"
       :collapse="isCollapse"
-      :background-color="variables.menuBg"
-      :text-color="variables.menuText"
       :unique-opened="false"
-      :active-text-color="variables.menuActiveText"
+      :background-color="colors.menuBg"
+      :text-color="colors.menuText"
+      :active-text-color="colors.menuActiveText"
       :collapse-transition="false"
       mode="vertical"
     >
@@ -29,7 +31,6 @@
 import { mapGetters } from 'vuex'
 import SidebarLogo from './SidebarLogo.vue'
 import SidebarItem from './SidebarItem.vue'
-import variables from '@/styles/variables.scss'
 export default {
   name: 'Sidebar',
   components: {
@@ -37,10 +38,18 @@ export default {
     SidebarItem
   },
   data() {
-    return {}
+    return {
+      // 定义 el-menu 的颜色
+      colors: {
+        // 菜单项背景色
+        menuBg: '#2541b2',
+        // 菜单项文字颜色
+        menuText: '#ffffff',
+        // 激活菜单项的颜色
+        menuActiveText: '#FFD166'
+      }
+    }
   },
-  created() {},
-  mounted() {},
   methods: {},
   computed: {
     ...mapGetters(['sidebar']),
@@ -60,10 +69,6 @@ export default {
     // 是否显示logo
     showLogo() {
       return this.$store.state.settings.sidebarLogo
-    },
-    // 样式变量
-    variables() {
-      return variables
     },
     // 判断侧边栏是否折叠
     isCollapse() {

@@ -116,12 +116,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.sidebar-item-container {
-  i {
-    color: currentColor;
-    width: 1em;
-    height: 1em;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
