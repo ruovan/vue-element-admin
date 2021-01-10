@@ -6,8 +6,14 @@ const { param2Obj } = require('./utils')
 const user = require('./user')
 // 导入 table : 获取随机生成的表格数据
 const table = require('./table')
+// 导入role数据
+const role = require('./role')
+// 导入article：随机生成的文章数据
+const article = require('./article')
+const search = require('./remote-search')
 // 展开 user 和 table 到 mocks 数组中：mocks=[{},{},{},...]
-const mocks = [...user, ...table]
+// 可以继续添加自定义的随机数据
+const mocks = [...user, ...table, ...role, ...article, ...search]
 
 // for front mock
 // 请谨慎使用，它将重新定义 XMLHttpRequest

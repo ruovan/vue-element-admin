@@ -1,36 +1,41 @@
 const Mock = require('mockjs')
-const TableData = []
+
+const List = []
 const count = 50
-// mock数据
+// 基本内容信息
+const baseContent =
+  '<h1>这是一条mock数据</h1><p><img src="https://wpimg.wallstcn.com/4c69009c-0fd4-4153-b112-6cb53d1cf943"></p>'
+// 基本图片信息
+const imageURL =
+  'https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70b3'
+
 for (let i = 0; i < count; i++) {
-  TableData.push(
+  List.push(
     Mock.mock({
-      // 随机id
-      id: '@increment()',
-      // 随机标题：为 10-20 的句子
-      title: '@ctitle(8, 15)',
-      // 随机段落：50句
-      description: '@cparagraph(20)',
-      content: '<h1>这是一条mock数据</h1>',
-      // 随机状态：从后面数组中随机选一个
-      'status|1': ['approval', 'unApproval', 'toBeApproval'],
-      // 随机名字
+      id: '@increment',
+      timestamp: '@datetime(yyyy年MM月dd)',
       author: '@cname',
-      // 随机时间
-      display_time: '@datetime(yyyy年MM月dd日)',
-      // 随机浏览量
-      pageviews: '@integer(300, 5000)',
-      // 随机类型：数组之一
+      reviewer: '@cname',
+      title: '@ctitle(10, 18)',
+      content_short: 'mock data',
+      content: baseContent,
+      paragraph: '@cparagraph(50)',
+      forecast: '@float(0, 100, 2, 2)',
+      importance: '@integer(1, 3)',
       'type|1': ['JavaScript', 'JAVA', 'Python', 'C语言'],
-      // 重要性：星数量1,2,3
-      importance: '@integer(1, 3)'
+      'status|1': ['approval', 'unApproval', 'toBeApproval'],
+      display_time: '@datetime(yyyy-MM-dd)',
+      comment_disabled: true,
+      pageviews: '@integer(300, 5000)',
+      imageURL,
+      platforms: ['a-platform']
     })
   )
 }
 
 module.exports = [
   {
-    url: '/table/list',
+    url: '/article/list',
     type: 'get',
     response: config => {
       // 解构
@@ -43,7 +48,7 @@ module.exports = [
         sort
       } = config.query
       // 过滤
-      let mockList = TableData.filter(item => {
+      let mockList = List.filter(item => {
         if (importance && item.importance !== +importance) return false
         if (type && item.type !== type) return false
         if (title && item.title.indexOf(title) < 0) return false
@@ -69,11 +74,11 @@ module.exports = [
   },
 
   {
-    url: '/table/detail',
+    url: '/article/detail',
     type: 'get',
     response: config => {
       const { id } = config.query
-      for (const article of TableData) {
+      for (const article of List) {
         if (article.id === +id) {
           return {
             code: 20000,
@@ -85,7 +90,7 @@ module.exports = [
   },
 
   {
-    url: '/table/create',
+    url: '/article/create',
     type: 'post',
     response: _ => {
       return {
@@ -96,7 +101,7 @@ module.exports = [
   },
 
   {
-    url: '/table/update',
+    url: '/article/update',
     type: 'post',
     response: _ => {
       return {
@@ -107,13 +112,13 @@ module.exports = [
   },
 
   {
-    url: '/table/delete',
+    url: '/article.delete',
     type: 'post',
     response: data => {
-      // data.query.id 为传入参数，字符串形式，通过 - 0,变为数字型
-      const index = TableData.findIndex(item => item.id === data.query.id - 0)
-      // 删除指定元素
-      TableData.splice(index, 1)
+      List.splice(
+        List.findIndex(item => item.id === data),
+        1
+      )
       return {
         code: 20000,
         data: 'success'

@@ -22,8 +22,8 @@ import '@/permission'
  * 目前 MockJs 将用于生产环境
  * 上线前请先删除！
  */
-import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
   mockXHR()
 }
 

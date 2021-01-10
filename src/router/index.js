@@ -75,23 +75,35 @@ export const constantRoutes = [
   },
   // 案例路由 /example
   {
-    path: '/example',
+    path: '/table',
     component: Layout,
-    redirect: '/example/table',
+    redirect: '/table/basis-table',
     name: 'Example',
-    meta: { title: '案例', icon: 'el-icon-menu' },
+    meta: { title: '表格组件', icon: 'el-icon-menu' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
+        path: 'basis-table',
+        name: 'BasisTable',
+        component: () => import('@/views/table/basis-table/index'),
         meta: { title: '基础表格', icon: 'el-icon-tickets' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: '树形结构', icon: 'el-icon-data-board' }
+        path: 'expand-table',
+        name: 'DragTable',
+        component: () => import('@/views/table/expand-table/index'),
+        meta: { title: '拓展表格', icon: 'el-icon-data-board' }
+      },
+      {
+        path: 'drag-table',
+        name: 'DragTable',
+        component: () => import('@/views/table/drag-table/index'),
+        meta: { title: '拖拽表格', icon: 'el-icon-data-board' }
+      },
+      {
+        path: 'operate-table',
+        name: 'OperateTable',
+        component: () => import('@/views/table/operate-table/index'),
+        meta: { title: '操作表格', icon: 'el-icon-data-board' }
       }
     ]
   },

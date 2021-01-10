@@ -79,3 +79,9 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+/* 交换message.confirm的取消与确认按钮位置,该样式必须定义到全局 */
+.btn-custom-cancel {
+  float: right;
+  margin-left: 10px;
+}

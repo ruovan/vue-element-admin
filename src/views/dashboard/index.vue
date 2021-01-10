@@ -1,425 +1,51 @@
 <template>
   <div class="dashboard-container">
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain>主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
-    </el-row>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-
-    <el-row>
-      <el-button plain>朴素按钮</el-button>
-      <el-button type="primary" plain @click="show">主要按钮</el-button>
-      <el-button type="success" plain>成功按钮</el-button>
-      <el-button type="info" plain>信息按钮</el-button>
-      <el-button type="warning" plain>警告按钮</el-button>
-      <el-button type="danger" plain>危险按钮</el-button>
+    <panel-group @handleSetLineChartData="handleSetLineChartData" />
+    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+      <line-chart :chart-data="lineChartData" />
     </el-row>
   </div>
 </template>
 
 <script>
+import PanelGroup from './components/PanelGroup'
+import LineChart from './components/LineChart'
+
+const lineChartData = {
+  newVisitis: {
+    expectedData: [100, 120, 161, 134, 105, 160, 165],
+    actualData: [120, 82, 91, 154, 162, 140, 145]
+  },
+  messages: {
+    expectedData: [200, 192, 120, 144, 160, 130, 140],
+    actualData: [180, 160, 151, 106, 145, 150, 130]
+  },
+  purchases: {
+    expectedData: [80, 100, 121, 104, 105, 90, 100],
+    actualData: [120, 90, 100, 138, 142, 130, 130]
+  },
+  shoppings: {
+    expectedData: [130, 140, 141, 142, 145, 150, 160],
+    actualData: [120, 82, 91, 154, 162, 140, 130]
+  }
+}
 export default {
   name: 'Dashboard',
+  components: {
+    PanelGroup,
+    LineChart
+  },
   data() {
-    return {}
+    return {
+      lineChartData: lineChartData.newVisitis
+    }
   },
   created() {},
   mounted() {},
   methods: {
+    handleSetLineChartData(type) {
+      this.lineChartData = lineChartData[type]
+    },
     show() {
       this.$store.state.settings.fixedHeader = !this.$store.state.settings
         .fixedHeader
@@ -429,4 +55,29 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.dashboard-container {
+  padding: 32px;
+  background-color: rgb(240, 242, 245);
+  position: relative;
+
+  .github-corner {
+    position: absolute;
+    top: 0px;
+    border: 0;
+    right: 0;
+  }
+
+  .chart-wrapper {
+    background: #fff;
+    padding: 16px 16px 0;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .chart-wrapper {
+    padding: 8px;
+  }
+}
+</style>
