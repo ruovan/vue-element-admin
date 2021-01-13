@@ -33,17 +33,9 @@ export default {
   methods: {
     getBreadcrumb() {
       // 只显示路由中 meta对象中的 title属性
-      let matched = this.$route.matched.filter(
+      const matched = this.$route.matched.filter(
         item => item.meta && item.meta.title
       )
-      const first = matched[0]
-
-      // 当matched没有 dashboard时，加上 /dashboard
-      if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: '首页' } }].concat(
-          matched
-        )
-      }
       // 赋值
       this.levelList = matched.filter(
         item => item.meta && item.meta.title && item.meta.breadcrumb !== false

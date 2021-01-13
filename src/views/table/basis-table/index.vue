@@ -1,5 +1,5 @@
 <template>
-  <el-card class="table-container">
+  <el-card class="table-container" shadow="never">
     <el-alert
       show-icon
       type="info"
@@ -69,7 +69,6 @@
         label="创建时间"
         width="200"
         sortable
-        :sort-by="display_time"
       >
         <template slot-scope="scope">
           <span>{{ scope.row.display_time }}</span>
@@ -96,7 +95,7 @@
 // 导入分页组件
 import Pagination from '@/components/Pagination'
 // 导入请求方法
-import { fetchTableList } from '@/api/table'
+import { fetchList } from '@/api/article'
 export default {
   name: 'BasisTable',
   components: {
@@ -104,7 +103,7 @@ export default {
   },
   data() {
     return {
-      list: null,
+      list: [],
       total: 0,
       listLoading: true,
       listQuery: {
@@ -124,7 +123,7 @@ export default {
     // 获取数据
     getList() {
       this.listLoading = true
-      fetchTableList(this.listQuery).then(response => {
+      fetchList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
 

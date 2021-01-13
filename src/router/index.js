@@ -5,7 +5,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 /* Layout */
-import Layout from '@/layout'
+import Layout from '@/views/layout'
 
 // 在development-env中不使用延迟加载，因为延迟加载过多的页面会导致webpack热更新太慢。所以只在生产中使用延迟加载
 
@@ -61,90 +61,158 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    // 重定向到首页
-    redirect: '/dashboard',
-    hidden: false,
+    name: 'Home',
+    alwaysShow: true,
+    meta: { title: '首页', icon: 'el-icon-s-home' },
     children: [
       {
-        name: 'Dashboard',
         path: 'dashboard',
+        name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: '首页', icon: 'el-icon-s-home' }
+        meta: { title: '数据展示', icon: 'el-icon-house' }
       }
     ]
   },
-  // 案例路由 /example
+  // table组件
   {
     path: '/table',
     component: Layout,
-    redirect: '/table/basis-table',
-    name: 'Example',
-    meta: { title: '表格组件', icon: 'el-icon-menu' },
+    name: 'Table',
+    meta: { title: '表格', icon: 'el-icon-menu' },
     children: [
       {
         path: 'basis-table',
         name: 'BasisTable',
         component: () => import('@/views/table/basis-table/index'),
-        meta: { title: '基础表格', icon: 'el-icon-tickets' }
+        meta: { title: '信息展示', icon: 'el-icon-tickets' }
       },
       {
         path: 'expand-table',
-        name: 'DragTable',
+        name: 'ExpandTable',
         component: () => import('@/views/table/expand-table/index'),
-        meta: { title: '拓展表格', icon: 'el-icon-data-board' }
+        meta: { title: '展开项', icon: 'el-icon-data-board' }
       },
       {
         path: 'drag-table',
         name: 'DragTable',
         component: () => import('@/views/table/drag-table/index'),
-        meta: { title: '拖拽表格', icon: 'el-icon-data-board' }
+        meta: { title: '拖拽功能', icon: 'el-icon-rank' }
       },
       {
         path: 'operate-table',
         name: 'OperateTable',
         component: () => import('@/views/table/operate-table/index'),
-        meta: { title: '操作表格', icon: 'el-icon-data-board' }
+        meta: { title: '基本操作', icon: 'el-icon-s-operation' }
       }
     ]
   },
-  // 表单 /form
+  // 图表
   {
-    path: '/form',
+    path: '/echart',
     component: Layout,
+    name: 'Echart',
+    alwaysShow: true,
+    meta: { title: '图表', icon: 'el-icon-s-data' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '表格', icon: 'el-icon-s-order' }
+        path: 'line',
+        name: 'LineChart',
+        component: () => import('@/views/echart/line'),
+        meta: { title: '折线图', icon: 'el-icon-data-line' }
+      },
+      {
+        path: 'mixChart',
+        name: 'MixChart',
+        component: () => import('@/views/echart/mix-chart'),
+        meta: { title: '混合图表', icon: 'el-icon-c-scale-to-original' }
       }
     ]
   },
-  // 外链
+  // 组件例子
   {
-    path: '/external',
+    path: '/example',
     component: Layout,
+    alwaysShow: true,
+    meta: { title: '组件', icon: 'el-icon-s-cooperation' },
     children: [
       {
-        path: 'index',
-        name: 'External',
-        component: () => import('@/views/external/index'),
-        meta: { title: '外链', icon: 'el-icon-link' }
+        path: 'tab-panel',
+        name: 'TabPanel',
+        component: () => import('@/views/example/tab-panel'),
+        meta: { title: 'tab栏', icon: 'el-icon-takeaway-box' }
+      },
+      {
+        path: 'dropzone',
+        name: 'Dropzone',
+        component: () => import('@/views/example/dropzone'),
+        meta: { title: '上传图片', icon: 'el-icon-cloudy' }
+      },
+      {
+        path: 'dragDialog',
+        name: 'DragDialog',
+        component: () => import('@/views/example/drag-dialog'),
+        meta: { title: '拖拽对话框', icon: 'el-icon-thumb' }
+      },
+      {
+        path: 'back-to-top',
+        name: 'BackToTop',
+        component: () => import('@/views/example/back-to-top'),
+        meta: { title: '返回顶部', icon: 'el-icon-top' }
+      },
+      {
+        path: 'sticky',
+        name: 'Sticky',
+        component: () => import('@/views/example/sticky'),
+        meta: { title: '粘性布局', icon: 'el-icon-hot-water' }
+      },
+      {
+        path: 'dnd-list',
+        name: 'DndList',
+        component: () => import('@/views/example/dnd-list'),
+        meta: { title: '拖拽列表', icon: 'el-icon-connection' }
+      },
+      {
+        path: 'splitPane',
+        name: 'SplitPane',
+        component: () => import('@/views/example/split-pane'),
+        meta: { title: '分割面板', icon: 'el-icon-refrigerator' }
       }
     ]
   },
 
+  // 主题
+  {
+    path: '/theme',
+    component: Layout,
+    alwaysShow: true,
+    meta: { title: '主题', icon: 'el-icon-s-order' },
+    children: [
+      {
+        path: 'index',
+        name: 'Theme',
+        component: () => import('@/views/theme/index'),
+        meta: { title: '主题', icon: 'el-icon-magic-stick' }
+      }
+    ]
+  },
   // Page404
   {
     path: '*',
     component: Layout,
-    redirect: '/404',
+    // redirect: '/404',
+    meta: { title: '错误', icon: 'el-icon-s-release' },
     children: [
       {
         path: '/404',
         name: 'Page404',
         component: () => import('@/views/error/404'),
-        meta: { title: '错误', icon: 'el-icon-s-release' }
+        meta: { title: '错误404', icon: 'el-icon-document-delete' }
+      },
+      {
+        path: '/401',
+        name: 'Page401',
+        component: () => import('@/views/error/401'),
+        meta: { title: '错误401', icon: 'el-icon-document-remove' }
       }
     ]
   }

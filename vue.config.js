@@ -2,6 +2,8 @@
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
+const styleVariables = require('./src/styles/variables')
+
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -106,6 +108,20 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+    // scss配置项，--------------------------------------------
+    // config.module
+    //   .rule('scss')
+    //   .test(/\.scss$/)
+    //   .end()
+    //   .use(['css-loader', 'postcss-loader'])
+    //   .loader('sass-loader')
+    //   .options({
+    //     data: Object.keys(styleVariables)
+    //       .map(k => `\$${k}: ${styleVariables[k]};`)
+    //       .join('\n')
+    //   })
+    //   .end()
+    // ------------------------------------------------------
     // 产品上线阶段时
     // config.when(process.env.NODE_ENV !== 'development', config => {
     //   config

@@ -73,8 +73,6 @@
         style="width: 100%;"
         @sort-change="sortChange"
       >
-        <!-- 序号 -->
-        <el-table-column type="index" label="序号" align="center" width="50" />
         <!-- id号 -->
         <el-table-column
           label="编号"
@@ -281,11 +279,11 @@
 <script>
 // 引入接口文件
 import {
-  fetchTableList,
-  createTableData,
-  updateTableData,
-  deleteTableData
-} from '@/api/table'
+  fetchList,
+  createArticle,
+  updateArticle,
+  deleteArticle
+} from '@/api/article'
 // 引入分页组件
 import Pagination from '@/components/Pagination'
 // 类型参数
@@ -400,7 +398,7 @@ export default {
     getList() {
       this.listLoading = true
       // 发起请求
-      fetchTableList(this.listQuery).then(response => {
+      fetchList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
         // 下面代码是为：双击文字标题进行行内编辑 服务的，为list新增一个edit属性
@@ -509,7 +507,7 @@ export default {
         if (valid) {
           this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
           this.temp.author = 'vue-element-admin'
-          createTableData(this.temp).then(() => {
+          createArticle(this.temp).then(() => {
             this.list.unshift(this.temp)
             this.dialogFormVisible = false
             this.$notify({
@@ -539,7 +537,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateTableData(tempData).then(() => {
+          updateArticle(tempData).then(() => {
             const index = this.list.findIndex(v => v.id === this.temp.id)
             this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false
@@ -564,7 +562,7 @@ export default {
       }).then(() => {
         // 根据id删除数据
         console.log(row.id)
-        deleteTableData(row.id)
+        deleteArticle(row.id)
           .then(response => {
             this.$notify({
               title: '删除数据成功',

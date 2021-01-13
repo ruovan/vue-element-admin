@@ -1,0 +1,32 @@
+// sidebar
+// 侧边栏菜单文字颜色
+$menuText: #000;
+// 激活项文字颜色
+// $menuActiveText: #05154e;
+$menuActiveText: #0000ff;
+// 二级菜单激活项文字
+$subMenuActiveText: #ff0000;
+// 菜单背景色
+$menuBg: #eaf2fc;
+// $menuBg: #f8f8f8;
+// 菜单悬浮背景色
+// $menuHover: #50abe0;
+$menuHover: #d7e2e1;
+// 子项背景色
+// $subMenuBg: #647fe8;
+$subMenuBg: #fcfdff;
+// 激活项背景色
+// $activeBg: #ff9800;
+$activeBg: -webkit-linear-gradient(left, transparent, #f7e1e1);
+// 滚动条颜色
+// $scrollColor: #1b78fc;
+$scrollColor: orange;
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+}

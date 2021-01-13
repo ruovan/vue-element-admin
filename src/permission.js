@@ -7,7 +7,7 @@ import store from './store'
 import NProgress from 'nprogress'
 // Progress 进度条样式
 import 'nprogress/nprogress.css'
-import { Message, Notification } from 'element-ui'
+import { Message } from 'element-ui'
 import { getToken } from '@/utils/auth'
 // import getPageTitle from '@/utils/get-page-title'
 
@@ -71,10 +71,5 @@ router.beforeEach(async (to, from, next) => {
 })
 // 在路由跳转之后
 router.afterEach((to, from) => {
-  Notification.info({
-    title: '路由加载',
-    message: '当前路由：' + to.path,
-    position: 'bottom-right'
-  })
   NProgress.done() // 结束Progress
 })

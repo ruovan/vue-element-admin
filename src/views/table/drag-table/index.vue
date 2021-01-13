@@ -9,7 +9,6 @@
     <!-- 注意：为了获得正确的行顺序，row-key是必需的 -->
     <el-table
       ref="dragTableRef"
-      v-loading="listLoading"
       :data="list"
       row-key="id"
       border
@@ -65,7 +64,7 @@
 
 <script>
 // TODO:
-import { fetchTableList } from '@/api/table'
+import { fetchList } from '@/api/article'
 // 引入用于排序的模块
 import Sortable from 'sortablejs'
 
@@ -73,13 +72,13 @@ export default {
   name: 'DragTable',
   data() {
     return {
-      list: null,
+      // 注意：list为table绑定的数据，需要初始化为空数组，不能初始化为null,
+      list: [],
       total: null,
-      listLoading: true,
       // 查询参数
       listQuery: {
-        page: 2,
-        limit: 7
+        page: 1,
+        limit: 10
       },
       sortable: null
     }
@@ -90,13 +89,11 @@ export default {
   methods: {
     // 获取表格数据
     async getList() {
-      this.listLoading = true
       // 发起请求
-      const { data } = await fetchTableList(this.listQuery)
+      const { data } = await fetchList(this.listQuery)
       this.list = data.items
       this.total = data.total
 
-      this.listLoading = false
       // 数据改变后执行
       this.$nextTick(() => {
         this.setSort()
@@ -109,7 +106,6 @@ export default {
       const el = this.$refs.dragTableRef.$el.querySelectorAll(
         '.el-table__body-wrapper > table > tbody'
       )[0]
-      console.log(el)
       this.sortable = Sortable.create(el, {
         animation: 150,
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
@@ -120,9 +116,9 @@ export default {
           dataTransfer.setData('Text', '')
         },
         // 结束拖拽
-        onEnd: evt => {
-          const targetRow = this.list.splice(evt.oldIndex, 1)[0]
-          this.list.splice(evt.newIndex, 0, targetRow)
+        onEnd: event => {
+          const targetRow = this.list.splice(event.oldIndex, 1)[0]
+          this.list.splice(event.newIndex, 0, targetRow)
         }
       })
     }

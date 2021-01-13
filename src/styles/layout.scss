@@ -1,18 +1,5 @@
 // sidebar
-// 侧边栏菜单文字颜色
-$menuText: #bfcbd9;
-// 激活项文字颜色
-$menuActiveText: #409eff;
-// 子级菜单激活项文字颜色
-$subMenuActiveText: #f4f4f5; //https://github.com/ElemeFE/element/issues/12951
-// 菜单背景色
-$menuBg: #2541b2;
-// 菜单悬浮背景色
-$menuHover: #1e3591;
-// 子项背景色
-$subMenuBg: #03256c;
-// 激活项背景色
-$activeBg: #1768ac;
+
 // 侧边框宽度
 $sideBarWidth: 210px;
 
@@ -38,115 +25,139 @@ $sideBarWidth: 210px;
   z-index: 999;
 }
 #app {
-  // 右侧内容区域
-  .main-container {
-    min-height: 100%;
-    transition: margin-left 0.28s;
-    margin-left: $sideBarWidth;
-    position: relative;
-    .app-main-container {
-      min-height: 100vh;
-      width: 100%;
+  // 导航栏部分
+  .navbar-container {
+    height: 60px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    transition: width 0.28s;
+    background: #eaf2fc;
+
+    box-shadow: 0px 5px 20px -10px #9b9898;
+    // box-shadow: inset 0px -2px 0px 0px #b7b7ef;
+
+    .navbar-logo-container {
       position: relative;
+      float: left;
+      width: 210px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
       overflow: hidden;
-      // 导航栏部分
-      .navbar-container {
-        height: 50px;
-        overflow: hidden;
-        position: relative;
-        background: #fff;
-        box-shadow: 0 1px 4px -2px #111;
-        // 展开图标
-        .hamburger-container {
-          line-height: 56px;
-          height: 100%;
-          float: left;
-          font-size: 26px;
-          padding-left: 10px;
+
+      & .navbar-logo-link {
+        height: 100%;
+        width: 100%;
+
+        & .navbar-logo {
+          width: 32px;
+          height: 32px;
+          vertical-align: middle;
+          margin-right: 12px;
+        }
+
+        & .navbar-title {
+          display: inline-block;
+          margin: 0;
+          color: #000;
+          font-weight: 600;
+          line-height: 50px;
+          font-size: 14px;
+          font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+          vertical-align: middle;
+        }
+      }
+    }
+    // 右侧菜单
+    .right-menu {
+      float: right;
+      height: 100%;
+      line-height: 50px;
+      &:focus {
+        outline: none;
+      }
+      // 右侧菜单项
+      .right-menu-item {
+        display: inline-block;
+        padding: 0 8px;
+        height: 100%;
+        font-size: 18px;
+        color: #5a5e66;
+        vertical-align: text-bottom;
+
+        &.hover-effect {
           cursor: pointer;
           transition: background 0.3s;
-        }
-        // 面包屑导航栏
-        .breadcrumb-container {
-          float: left;
-        }
-        // 右侧菜单
-        .right-menu {
-          float: right;
-          height: 100%;
-          line-height: 50px;
-          &:focus {
-            outline: none;
-          }
-          // 右侧菜单项
-          .right-menu-item {
-            display: inline-block;
-            padding: 0 8px;
-            height: 100%;
-            font-size: 18px;
-            color: #5a5e66;
-            vertical-align: text-bottom;
 
-            &.hover-effect {
-              cursor: pointer;
-              transition: background 0.3s;
-
-              &:hover {
-                background: rgba(0, 0, 0, 0.025);
-              }
-            }
-          }
-          // 下拉菜单样式
-          .avatar-container {
-            margin-right: 30px;
-            // 头像
-            .avatar-wrapper {
-              margin-top: 5px;
-              position: relative;
-              // 图片
-              .user-avatar {
-                cursor: pointer;
-                width: 40px;
-                height: 40px;
-                border-radius: 10px;
-              }
-              // 下拉图标
-              .el-icon-caret-bottom {
-                cursor: pointer;
-                position: absolute;
-                right: -20px;
-                top: 25px;
-                font-size: 16px;
-              }
-            }
+          &:hover {
+            background: rgba(0, 0, 0, 0.025);
           }
         }
       }
-      // 内容显示部分
-      .app-main {
-        padding: 15px;
+      // 下拉菜单样式
+      .avatar-container {
+        margin-right: 30px;
+        // 头像
+        .avatar-wrapper {
+          margin-top: 5px;
+          position: relative;
+          // 图片
+          .user-avatar {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+          // 下拉图标
+          .el-icon-caret-bottom {
+            cursor: pointer;
+            position: absolute;
+            right: -20px;
+            top: 25px;
+            font-size: 16px;
+          }
+        }
       }
-      // 导航栏固定时的样式
+    }
+  }
+  // 内容区域
+  .main-container {
+    position: relative;
+    margin-left: $sideBarWidth;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    transition: margin-left 0.28s;
+    padding-bottom: 10px;
+    background-color: #f8f8f8;
+    .app-navbar {
+      height: 50px;
+      // background-color: #f8f8f8;
+      .el-card__body {
+        padding: 0;
+      }
+      // 面包屑导航栏
+      .breadcrumb-container {
+        float: left;
+      }
+      // 展开图标
+      .hamburger-container {
+        line-height: 52px;
+        height: 100%;
+        float: left;
+        font-size: 26px;
+        padding-left: 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+    }
+
+    // el-dialog修正
+    .el-popup-parent--hidden {
       .fixed-header {
-        position: fixed;
-        top: 0;
-        right: 0;
-        z-index: 9;
-        width: calc(100% - #{$sideBarWidth});
-        transition: width 0.28s;
-      }
-
-      // 导航栏固定时，下面内容的样式
-      .fixed-header + .app-main {
-        min-height: calc(100vh - 50px);
-        margin-top: 50px;
-        padding: 15px;
-      }
-      // el-dialog修正
-      .el-popup-parent--hidden {
-        .fixed-header {
-          padding-right: 15px;
-        }
+        padding-right: 15px;
       }
     }
   }
@@ -155,13 +166,13 @@ $sideBarWidth: 210px;
     transition: width 0.28s;
     width: $sideBarWidth !important;
     background-color: $menuBg;
-    height: 100%;
+    box-shadow: 5px 10px 20px -10px #9b9898;
     position: fixed;
     font-size: 0px;
-    top: 0;
+    top: 60px;
     bottom: 0;
     left: 0;
-    z-index: 1001;
+    z-index: 1000;
     overflow: hidden;
     // 导航菜单项的图标大小
     i {
@@ -184,12 +195,13 @@ $sideBarWidth: 210px;
       border: none;
       height: 100%;
       width: 100% !important;
-      overflow: auto;
+      overflow: hidden;
+      overflow-y: auto;
 
       // 滚动条样式
       // 滚动条底层滚动槽
       &::-webkit-scrollbar-track-piece {
-        background: #d3dce6;
+        // background: #d3dce6;
       }
       // 滚动条整体样式
       &::-webkit-scrollbar {
@@ -197,7 +209,7 @@ $sideBarWidth: 210px;
       }
       // 滚动条滑块
       &::-webkit-scrollbar-thumb {
-        background: #1b78fc;
+        background: $scrollColor;
         border-radius: 20px;
       }
     }
@@ -214,9 +226,10 @@ $sideBarWidth: 210px;
         background-color: $activeBg !important;
       }
     }
-
+    // 一级菜单激活项
     .is-active > .el-submenu__title {
-      color: $subMenuActiveText !important;
+      font-weight: bold;
+      color: $menuActiveText !important;
       background-color: $activeBg !important;
     }
     // 嵌套的子项菜单项样式
@@ -228,10 +241,9 @@ $sideBarWidth: 210px;
       &:hover {
         background-color: $menuHover !important;
       }
-      // 激活项
+      // 二级菜单激活项
       &.is-active {
-        font-weight: bold;
-        background-color: $activeBg !important;
+        background: $activeBg !important;
       }
     }
   }

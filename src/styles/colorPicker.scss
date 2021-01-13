@@ -1,0 +1,16 @@
+/* 颜色选择器样式 */
+.el-color-picker__color {
+  border: none;
+}
+.el-color-picker__trigger {
+  width: 200px;
+  border: 1.5px solid #333;
+  vertical-align: middle;
+  padding: 1px;
+}
+.el-color-picker__icon {
+  width: 20px;
+  font-size: 16px;
+  left: 85%;
+  transform: translateY(-43%);
+}

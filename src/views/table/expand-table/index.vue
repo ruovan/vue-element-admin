@@ -32,11 +32,7 @@
         </template>
       </el-table-column>
       <!-- 序号-->
-      <el-table-column align="center" label="序号" width="65">
-        <template slot-scope="{ row }">
-          <span>{{ row.id }}</span>
-        </template>
-      </el-table-column>
+      <el-table-column align="center" label="序号" type="index" width="65" />
       <!-- 标题 -->
       <el-table-column min-width="300px" label="标题">
         <template slot-scope="{ row }">
@@ -60,19 +56,19 @@
 </template>
 
 <script>
-import { fetchTableList } from '@/api/table'
+import { fetchList } from '@/api/article'
 
 export default {
   name: 'ExpandTable',
   data() {
     return {
-      list: null,
+      list: [],
       total: null,
       listLoading: true,
       // 查询参数
       listQuery: {
-        page: 1,
-        limit: 7
+        page: 2,
+        limit: 10
       }
     }
   },
@@ -84,7 +80,7 @@ export default {
     async getList() {
       this.listLoading = true
       // 发起请求
-      const { data } = await fetchTableList(this.listQuery)
+      const { data } = await fetchList(this.listQuery)
       this.list = data.items
       this.total = data.total
 

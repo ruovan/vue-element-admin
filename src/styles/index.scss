@@ -1,10 +1,14 @@
+@import './light.scss';
+// @import './dark.scss';
 @import './mixin.scss';
 @import './transition.scss';
 @import './element-ui.scss';
 @import './layout.scss';
+@import './colorPicker.scss';
 
 body {
   height: 100%;
+  background-color: #f8f8f8;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -12,18 +16,16 @@ body {
     Microsoft YaHei, Arial, sans-serif;
 
   // 滚动条样式
-  overflow: auto;
-  // 滚动条底层滚动槽
-  &::-webkit-scrollbar-track-piece {
-    background: #d3dce6;
-  }
+  overflow: hidden;
+  overflow-y: auto;
   // 滚动条整体样式
   &::-webkit-scrollbar {
+    // 设置宽度
     width: 10px;
   }
   // 滚动条滑块
   &::-webkit-scrollbar-thumb {
-    background: #fca21b;
+    background: $scrollColor;
     border-radius: 20px;
   }
 }
@@ -78,10 +80,4 @@ div:focus {
 // main-container global css
 .app-container {
   padding: 20px;
-}
-
-/* 交换message.confirm的取消与确认按钮位置,该样式必须定义到全局 */
-.btn-custom-cancel {
-  float: right;
-  margin-left: 10px;
 }
