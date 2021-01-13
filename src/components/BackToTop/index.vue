@@ -6,6 +6,7 @@
       class="back-to-ceiling"
       @click="backToTop"
     >
+      <!-- svg绘制箭头符号 -->
       <svg
         width="16"
         height="16"
@@ -37,6 +38,7 @@ export default {
     },
     customStyle: {
       type: Object,
+      // 获取传入的样式
       default: function() {
         return {
           right: '50px',
@@ -72,15 +74,20 @@ export default {
   },
   methods: {
     handleScroll() {
+      // 当页面窗口滑动距离大于设置的显示高度距离时
       this.visible = window.pageYOffset > this.visibilityHeight
     },
+    // 返回顶部
     backToTop() {
       if (this.isMoving) return
+      // 获取页面滑动的距离
       const start = window.pageYOffset
       let i = 0
       this.isMoving = true
+      // 定时器，用于返回页面顶部动画
       this.interval = setInterval(() => {
         const next = Math.floor(this.easeInOutQuad(10 * i, start, -start, 500))
+        // 小于返回位置时，继续执行
         if (next <= this.backPosition) {
           window.scrollTo(0, this.backPosition)
           clearInterval(this.interval)
@@ -105,6 +112,8 @@ export default {
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  background-color: #2196f3 !important;
+  /* border-radius: 50px !important; */
 }
 
 .back-to-ceiling:hover {
@@ -122,7 +131,7 @@ export default {
 }
 
 .back-to-ceiling .Icon {
-  fill: #9aaabf;
+  fill: #fff;
   background: none;
 }
 </style>

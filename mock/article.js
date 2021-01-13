@@ -11,7 +11,7 @@ for (let i = 0; i < count; i++) {
       // 随机标题：为 10-20 的句子
       title: '@ctitle(8, 15)',
       // 随机段落：50句
-      description: '@cparagraph(20)',
+      paragraph: '@cparagraph(20)',
       content: '<h1>这是一条mock数据</h1>',
       // 随机状态：从后面数组中随机选一个
       'status|1': ['approval', 'unApproval', 'toBeApproval'],

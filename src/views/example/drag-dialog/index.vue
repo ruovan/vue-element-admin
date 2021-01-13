@@ -1,5 +1,5 @@
 <template>
-  <div class="drag-dialog-container">
+  <el-card class="drag-dialog-container" style="text-align:center;">
     <el-button type="primary" @click="dialogTableVisible = true">
       打开拖拽对话框
     </el-button>
@@ -7,6 +7,7 @@
       v-el-drag-dialog
       :visible.sync="dialogTableVisible"
       :show-close="false"
+      :lock-scroll="false"
       center
       title="拖拽对话框"
     >
@@ -16,7 +17,7 @@
         <el-table-column property="address" label="地址" />
       </el-table>
     </el-dialog>
-  </div>
+  </el-card>
 </template>
 
 <script>

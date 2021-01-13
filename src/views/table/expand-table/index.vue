@@ -27,7 +27,7 @@
           <div v-html="row.content"></div>
           <div>
             <h3>描述内容</h3>
-            <article class="expand-content">{{ row.description }}</article>
+            <article class="expand-content">{{ row.paragraph }}</article>
           </div>
         </template>
       </el-table-column>

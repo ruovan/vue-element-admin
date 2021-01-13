@@ -6,10 +6,13 @@
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    <!-- 顶部：导航区域 -->
-    <navbar class="navbar-container" />
+    <el-header>
+      <!-- 顶部：导航区域 -->
+      <navbar class="navbar-container" />
+    </el-header>
     <!-- 左侧：侧边栏区域 -->
     <sidebar class="sidebar-container" />
+
     <!-- 右侧：内容区域 -->
     <app-main class="main-container" />
   </div>

@@ -25,18 +25,22 @@ export default {
   name: 'SplitpaneDemo',
   components: { splitPane },
   methods: {
+    // 大小改变触发事件
     resize() {}
   }
 }
 </script>
 
-<style scoped>
-.split-pane-container,
-/deep/ .el-card__body {
+<style lang="scss" scoped>
+.split-pane-container {
   position: relative;
   height: 88vh;
 }
-
+// scss中需要使用 ::v-deep 替换 /deep/ 或者 >>>
+::v-deep .el-card__body {
+  position: relative;
+  height: 88vh;
+}
 .left-container {
   background-color: #f38181;
   height: 100%;

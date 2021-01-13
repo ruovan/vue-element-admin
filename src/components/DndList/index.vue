@@ -1,5 +1,6 @@
 <template>
   <div class="dndList">
+    <!-- 左侧列表 -->
     <div :style="{ width: width1 }" class="dndList-list">
       <h3>{{ list1Title }}</h3>
       <draggable
@@ -13,10 +14,12 @@
           :key="element.id"
           class="list-complete-item"
         >
+          <!-- 文字内容 -->
           <div class="list-complete-item-handle">
-            {{ element.id }}[{{ element.author }}] {{ element.title }}
+            {{ element.title }}
           </div>
-          <div style="position:absolute;right:0px;">
+          <!-- 删除图标 -->
+          <div style="position:absolute;right:10px;">
             <span
               style="float: right ;margin-top: -20px;margin-right:5px;"
               @click="deleteEle(element)"
@@ -27,6 +30,7 @@
         </div>
       </draggable>
     </div>
+    <!-- 右侧列表 -->
     <div :style="{ width: width2 }" class="dndList-list">
       <h3>{{ list2Title }}</h3>
       <draggable :list="list2" group="article" class="dragArea">
@@ -36,7 +40,7 @@
           class="list-complete-item"
         >
           <div class="list-complete-item-handle2" @click="pushEle(element)">
-            {{ element.id }} [{{ element.author }}] {{ element.title }}
+            {{ element.title }}
           </div>
         </div>
       </draggable>
@@ -87,18 +91,23 @@ export default {
     isNotInList2(v) {
       return this.list2.every(k => v.id !== k.id)
     },
+    // 从左侧列表删除数据，添加到右侧列表
     deleteEle(ele) {
       for (const item of this.list1) {
+        // 查找到左侧列表中对应要删除的id
         if (item.id === ele.id) {
           const index = this.list1.indexOf(item)
           this.list1.splice(index, 1)
           break
         }
       }
+      // 判断是否在右侧列表中，以添加该数据
       if (this.isNotInList2(ele)) {
+        // 头部添加
         this.list2.unshift(ele)
       }
     },
+    // 在右侧列表中点击添加数据到左侧列表
     pushEle(ele) {
       for (const item of this.list2) {
         if (item.id === ele.id) {
@@ -112,8 +121,6 @@ export default {
       }
     },
     setData(dataTransfer) {
-      // to avoid Firefox bug
-      // Detail see : https://github.com/RubaXa/Sortable/issues/1012
       dataTransfer.setData('Text', '')
     }
   }
@@ -122,18 +129,18 @@ export default {
 
 <style lang="scss" scoped>
 .dndList {
-  background: #fff;
-  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
   &:after {
     content: '';
     display: table;
     clear: both;
   }
   .dndList-list {
-    float: left;
-    padding-bottom: 30px;
-    &:first-of-type {
-      margin-right: 2%;
+    background-color: #dae6ee;
+    padding: 10px;
+    h3 {
+      padding-left: 30px;
     }
     .dragArea {
       margin-top: 15px;
@@ -145,11 +152,15 @@ export default {
 
 .list-complete-item {
   cursor: pointer;
+  user-select: none;
   position: relative;
-  font-size: 14px;
-  padding: 5px 12px;
-  margin-top: 4px;
-  border: 1px solid #bfcbd9;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: inset 0px 0px 7px 3px #bfcbd9;
+  text-shadow: 1px 1px 1px #000;
+  background-color: #f8f8f8;
   transition: all 1s;
 }
 

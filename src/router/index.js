@@ -90,7 +90,7 @@ export const constantRoutes = [
         path: 'expand-table',
         name: 'ExpandTable',
         component: () => import('@/views/table/expand-table/index'),
-        meta: { title: '展开项', icon: 'el-icon-data-board' }
+        meta: { title: '内容展开', icon: 'el-icon-data-board' }
       },
       {
         path: 'drag-table',
