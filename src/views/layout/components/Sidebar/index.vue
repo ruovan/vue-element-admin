@@ -3,7 +3,6 @@
   <div>
     <!-- 侧边栏导航 -->
     <el-menu
-      router
       :default-active="activeMenu"
       :collapse="isCollapse"
       :unique-opened="false"
@@ -15,7 +14,7 @@
     >
       <!-- 菜单项组件 -->
       <sidebar-item
-        v-for="route in routes"
+        v-for="route in permission_routes"
         :key="route.path"
         :item="route"
         :base-path="route.path"
@@ -35,31 +34,19 @@ export default {
     SidebarItem
   },
   data() {
-    return {
-      // 定义 el-menu 的颜色
-      colors: {
-        // 菜单项背景色
-        menuBg: '#2541b2',
-        // 菜单项文字颜色
-        menuText: '#ffffff',
-        // 激活菜单项的颜色
-        subMenuActiveText: '#FFD166'
-      }
-    }
+    return {}
   },
   created() {
     this.show()
   },
-  methods: {
-    show() {
-      // console.log(variables)
-    }
-  },
+  methods: {},
   computed: {
-    ...mapGetters(['sidebar']),
-    routes() {
-      return this.$router.options.routes
-    },
+    // TODO:注意，这里在进行权限设置后，要从permission_routes中获取路由，而不是routes了
+    ...mapGetters(['permission_routes', 'sidebar']),
+    // 进行权限控制后，该属性可取消
+    // routes() {
+    //   return this.$router.options.routes
+    // },
     // 当前激活菜单项
     activeMenu() {
       const route = this.$route

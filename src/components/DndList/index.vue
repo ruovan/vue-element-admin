@@ -137,8 +137,6 @@ export default {
     clear: both;
   }
   .dndList-list {
-    background-color: #dae6ee;
-    padding: 10px;
     h3 {
       padding-left: 30px;
     }
@@ -150,6 +148,7 @@ export default {
   }
 }
 
+// 列表项
 .list-complete-item {
   cursor: pointer;
   user-select: none;

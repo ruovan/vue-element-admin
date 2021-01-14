@@ -22,93 +22,85 @@ $scrollColor: #3f51b5;
   subMenuBg: $subMenuBg;
 }
 // ---------------------------
-$container: #0b132b;
+$container: #98a4c8;
 $navbar: #3f51b5;
 $text: #ffebcd;
 $tableText: #79aad5;
 $dark: #05154e;
-$card: #5d37a1;
+$card: #e6e6e6;
 
 #app {
-  .main-container {
-    background-color: $container;
-    .app-main-container {
-      .navbar-container {
-        background-color: $navbar !important;
-        // 面包屑导航
-        .el-breadcrumb__inner,
-        .el-breadcrumb__inner a,
-        .el-breadcrumb__inner .no-redirect {
-          color: $text !important;
-        }
-        // 折叠按钮
-        .hamburger-container {
-          color: $text;
-        }
-        // 头像箭头
-        .el-icon-caret-bottom {
-          color: $text;
-        }
-      }
+  // 面包屑导航
+  .el-breadcrumb__inner,
+  .el-breadcrumb__inner a,
+  .el-breadcrumb__inner .no-redirect {
+    color: $text !important;
+  }
+  // 折叠按钮
+  .hamburger-container {
+    color: $text;
+  }
+  // 头像箭头
+  .el-icon-caret-bottom {
+    color: $text;
+  }
+
+  // 卡片样式
+  .el-card {
+    color: $text;
+    background-color: $card;
+    border: none;
+  }
+  // 表格
+  .el-table th,
+  .el-table tr {
+    background-color: $dark;
+    color: $tableText;
+    // 标题的右侧边框线
+    border-color: $dark;
+  }
+  // 设置了striped的table的背景色，
+  .el-table--striped .el-table__body tr.el-table__row--striped td {
+    background: unset;
+  }
+  // table的悬浮背景色
+  .el-table__body tr:hover > td {
+    background-color: unset !important;
+  }
+
+  // 当前选择（点击）的table行的颜色
+  .el-table__body tr.current-row > td {
+    background-color: #ffe4c400;
+  }
+  // table标题下框线
+  .el-table th.is-leaf {
+    border-bottom: 1px solid $dark;
+  }
+  // 表格体中的table行的边框
+  .el-table--border td {
+    border: 1px solid $dark;
+  }
+  // 展开项内部
+  .el-table__expanded-cell {
+    background-color: #050a1d;
+  }
+  // 当前table展开时，展开的那一行的（非展开行的内部）
+  .el-table__row.current-row.expanded {
+    background-color: unset;
+  }
+  // 表格体，防止拖拽时闪现表格背景色（默认白色）
+  .el-table__body-wrapper {
+    tbody {
+      background-color: $dark;
     }
   }
-}
-// 卡片样式
-.el-card {
-  color: $text;
-  background-color: $card;
-  border: none;
-}
-
-.el-table th,
-.el-table tr {
-  background-color: $dark;
-  color: $tableText;
-  // 标题的右侧边框线
-  border-color: $dark;
-}
-// 设置了striped的table的背景色，
-.el-table--striped .el-table__body tr.el-table__row--striped td {
-  background: unset;
-}
-// table的悬浮背景色
-.el-table__body tr:hover > td {
-  background-color: unset !important;
-}
-
-// 当前选择（点击）的table行的颜色
-.el-table__body tr.current-row > td {
-  background-color: ​#27575a !important;
-}
-// table标题下框线
-.el-table th.is-leaf {
-  border-bottom: 1px solid $dark;
-}
-// 表格体中的table行的边框
-.el-table--border td {
-  border: 1px solid $dark;
-}
-// 展开项内部
-.el-table__expanded-cell {
-  background-color: $dark;
-}
-// 当前table展开时，展开的那一行的（非展开行的内部）
-.el-table__row.current-row.expanded {
-  background-color: unset;
-}
-// 表格体，防止拖拽时闪现表格背景色（默认白色）
-.el-table__body-wrapper {
-  tbody {
-    background-color: $dark;
+  // table外框线颜色
+  .el-table--border,
+  .el-table--group {
+    border: 1px solid $dark;
+    background-color: $dark !important;
   }
 }
-// table外框线颜色
-.el-table--border,
-.el-table--group {
-  border: 1px solid $dark;
-  background-color: $dark !important;
-}
-
 // --------------------------------
 // 下拉框
 .el-input--suffix .el-input__inner {

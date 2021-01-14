@@ -1,33 +1,27 @@
-// // sidebar
-// $menuText: #bfcbd9;
-// $menuActiveText: #409eff;
-// $subMenuActiveText: #f4f4f5; //https://github.com/ElemeFE/element/issues/12951
-
-// $menuBg: #304156;
-// $menuHover: #263445;
-
-// $subMenuBg: #1f2d3d;
-// $subMenuHover: #001528;
-
-// $sideBarWidth: 210px;
-$sideBarWidth: 210px;
-
-$menuText: menuText;
+// sidebar
+// 侧边栏菜单文字颜色
+$menuText: #bfcbd9;
 // 激活项文字颜色
-$menuActiveText: menuActiveText;
-// // 子级菜单激活项文字颜色
-$subMenuActiveText: #fff;
+$menuActiveText: #ffffff;
+// 二级菜单激活项文字
+$subMenuActiveText: #409eff;
 // 菜单背景色
-$menuBg: menuBg;
+$menuBg: #304156;
 // 菜单悬浮背景色
-$menuHover: menuHover;
+$menuHover: #001528;
 // 子项背景色
-// $subMenuBg: #03256c;
-$subMenuBg: subMenuBg;
+$subMenuBg: #1f2d3d;
 // 激活项背景色
-$activeBg: activeBg;
-// the :export directive is the magic sauce for webpack
-// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+$activeBg: -webkit-linear-gradient(left, transparent, #4f61594f, transparent);
+// 滚动条颜色
+$scrollColor: #4d82d580;
+// 容器颜色
+$container: #f8f8f8;
+// 导航栏背景色
+$navbar: #304156;
+// 导航栏文字
+$navbarText: #a9cedc;
+
 :export {
   menuText: $menuText;
   menuActiveText: $menuActiveText;
@@ -35,5 +29,4 @@ $activeBg: activeBg;
   menuBg: $menuBg;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
-  sideBarWidth: $sideBarWidth;
 }

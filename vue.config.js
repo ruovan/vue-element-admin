@@ -1,14 +1,11 @@
 'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
-
-const styleVariables = require('./src/styles/variables')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 // 页面标题
-const name = defaultSettings.title || 'vue Admin Template'
+const name = 'vue Admin Template'
 
 // 如果您的端口设置为80，
 // 使用管理员权限执行命令行。

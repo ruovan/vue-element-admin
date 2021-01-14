@@ -34,9 +34,8 @@ $sideBarWidth: 210px;
     top: 0;
     z-index: 999;
     width: 100%;
-    background: #eaf2fc;
-
-    box-shadow: 0px 5px 20px -10px #9b9898;
+    background-color: $navbar;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     // box-shadow: inset 0px -2px 0px 0px #b7b7ef;
 
     .navbar-logo-container {
@@ -62,7 +61,7 @@ $sideBarWidth: 210px;
         & .navbar-title {
           display: inline-block;
           margin: 0;
-          color: #000;
+          color: $navbarText;
           font-weight: 600;
           line-height: 50px;
           font-size: 14px;
@@ -126,6 +125,8 @@ $sideBarWidth: 210px;
     transition: width 0.28s;
     width: $sideBarWidth !important;
     background-color: $menuBg;
+    // background-image: -webkit-linear-gradient(90deg, yellow, green);
+    // background-size: auto 224px;
     box-shadow: 5px 10px 20px -10px #9b9898;
     position: fixed;
     font-size: 0px;
@@ -205,7 +206,7 @@ $sideBarWidth: 210px;
     // margin-top: 60px;
     transition: margin-left 0.28s;
     padding-bottom: 10px;
-    background-color: #f8f8f8;
+    background-color: $container;
 
     .app-navbar {
       height: 50px;

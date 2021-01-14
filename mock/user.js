@@ -12,20 +12,20 @@ const users = {
   'admin-token': {
     // 权限
     roles: ['admin'],
+    // 角色
+    name: 'admin',
     // 介绍
-    introduction: 'I am a super administrator',
+    introduction: '超级管理员:可以查看所有页面',
     // 头像
     avatar:
-      'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    // 角色
-    name: 'Super Admin'
+      'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg'
   },
   'editor-token': {
     roles: ['editor'],
-    introduction: 'I am an editor',
+    name: 'editor',
+    introduction: '普通用户:可以查看除权限页以外的所有页',
     avatar:
-      'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor'
+      'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg'
   }
 }
 
@@ -38,8 +38,10 @@ module.exports = [
       // config中包含用户登录请求参数
       // 将 username 解构出来
       const { username } = config.body
-      // 根据登录的用户名 username 设置 token
+      // 根据登录的用户名 username ,用模拟的数据设置 token
       const token = tokens[username]
+      // 密码验证暂不处理
+
       // 如果没有token，表示用户名不对，mock数据请求错误
       if (!token) {
         return {
@@ -60,11 +62,10 @@ module.exports = [
     url: '/user/info.*',
     type: 'get',
     response: config => {
-      // 将请求参数中的 token 值解构出来
+      // 将请求参数中的 token值 解构出来，token = admin-token | editor-token
       const { token } = config.query
-      // 通过mock中的 users 获取对应 token 的权限
+      // 再根据 token 获取 users 用户信息：roles、introduction、name、avatar
       const info = users[token]
-
       // mock数据请求错误
       if (!info) {
         return {

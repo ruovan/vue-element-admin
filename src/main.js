@@ -15,6 +15,7 @@ import '@/styles/index.scss'
 // import '@/icons'
 // 导入permission，用于设置路由守卫、权限等
 import '@/permission'
+
 /**
  * 如果你不想使用模拟服务器 mock-server
  * 您想将MockJs用于mock api

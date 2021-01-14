@@ -1,30 +1,29 @@
 const Mock = require('mockjs')
 const { deepClone } = require('../utils')
 const { asyncRoutes, constantRoutes } = require('./routes.js')
-
+// 动态获取的 routes
 const routes = deepClone([...constantRoutes, ...asyncRoutes])
 
 const roles = [
   {
     key: 'admin',
     name: 'admin',
-    description: 'Super Administrator. Have access to view all pages.',
-    routes: routes
+    description: '超级管理员。可以查看所有页面',
+    routes: routes // 管理员拥有所有权限，所有路由都可访问
   },
   {
     key: 'editor',
     name: 'editor',
-    description: 'Normal Editor. Can see all pages except permission page',
-    routes: routes.filter(i => i.path !== '/permission') // just a mock
+    description: '普通用户。可以查看除权限页以外的所有页',
+    routes: routes.filter(i => i.path !== '/permission') // 只允许访问没有权限验证的路由
   },
   {
     key: 'visitor',
     name: 'visitor',
-    description:
-      'Just a visitor. Can only see the home page and the document page',
+    description: '访客。只能看到主页',
     routes: [
       {
-        path: '',
+        path: '/home',
         redirect: 'dashboard',
         children: [
           {
@@ -39,7 +38,7 @@ const roles = [
 ]
 
 module.exports = [
-  // mock get all routes form server
+  // 从服务器端获取所有角色的路由
   {
     url: '/routes',
     type: 'get',
@@ -51,7 +50,7 @@ module.exports = [
     }
   },
 
-  // mock get all roles form server
+  // 从服务器端获取所有角色权限
   {
     url: '/roles',
     type: 'get',
@@ -63,7 +62,7 @@ module.exports = [
     }
   },
 
-  // add role
+  // 添加角色
   {
     url: '/role',
     type: 'post',
@@ -75,7 +74,7 @@ module.exports = [
     }
   },
 
-  // update role
+  // 更新角色
   {
     url: '/role/[A-Za-z0-9]',
     type: 'put',
@@ -87,7 +86,7 @@ module.exports = [
     }
   },
 
-  // delete role
+  // 删除角色
   {
     url: '/role/[A-Za-z0-9]',
     type: 'delete',

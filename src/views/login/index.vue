@@ -108,7 +108,7 @@ export default {
             .then(async () => {
               // 登录成功
               this.loading = false
-              await this.$router.push({ path: this.redirect || '/' })
+              await this.$router.push({ path: this.redirect || '/home' })
               this.$notify.success({
                 title: '登录成功',
                 message: '当前账户：' + this.$store.getters.name,

@@ -15,13 +15,20 @@
           !item.alwaysShow
       "
     >
-      <el-menu-item
-        :index="resolvePath(onlyOneChild.path)"
-        :class="{ 'submenu-title-noDropdown': !isNest }"
+      <router-link
+        v-if="onlyOneChild.meta"
+        :to="resolvePath(onlyOneChild.path)"
       >
-        <i :class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"></i>
-        <span slot="title">{{ onlyOneChild.meta.title }}</span>
-      </el-menu-item>
+        <el-menu-item
+          :index="resolvePath(onlyOneChild.path)"
+          :class="{ 'submenu-title-noDropdown': !isNest }"
+        >
+          <i
+            :class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
+          ></i>
+          <span slot="title">{{ onlyOneChild.meta.title }}</span>
+        </el-menu-item>
+      </router-link>
     </template>
     <!-- 有多个子级菜单项 -->
     <el-submenu

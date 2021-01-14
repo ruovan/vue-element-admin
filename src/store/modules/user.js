@@ -3,26 +3,20 @@
  */
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { resetRouter } from '@/router'
+import router, { resetRouter } from '@/router'
 
-const getDefaultState = () => {
-  return {
-    // 调用auth.js中的 getToken 函数，获取 token值
-    token: getToken(),
-    // 存储角色：管理员~！~
-    name: '',
-    // 存储头像
-    avatar: ''
-  }
+const state = {
+  // 调用auth.js中的 getToken 函数，获取 token值
+  token: getToken(),
+  // 存储角色名：管理员~！~
+  name: '',
+  // 存储头像
+  avatar: '',
+  roles: [],
+  introduction: ''
 }
 
-const state = getDefaultState()
-
 const mutations = {
-  // 重置state,调用方法清空信息
-  RESET_STATE: state => {
-    Object.assign(state, getDefaultState())
-  },
   // 设置 token 值，并保存到vuex中
   SET_TOKEN: (state, token) => {
     state.token = token
@@ -34,6 +28,13 @@ const mutations = {
   // 设置头像，并保存到vuex中
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  // 设置权限
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
+  },
+  SET_INTRODUCTION: (state, introduction) => {
+    state.introduction = introduction
   }
 }
 // 仍然需要通过过 commit 来调用 mutations 中的函数
@@ -43,9 +44,10 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      // 调用用户接口中的 login 函数，发起请求登录
+      // 调用用户接口中的 login 函数，发起请求登录,登录只会设置 token值，不会获取用户信息
       login({ username: username.trim(), password: password })
         .then(response => {
+          // 这里返回数据存储的是token值
           const { data } = response
           commit('SET_TOKEN', data.token)
           // 调用auth.js中的 setToken 函数，设置 token值
@@ -66,17 +68,27 @@ const actions = {
         .then(response => {
           // 请求成功，返回用户信息
           const { data } = response
-          // 判断返回的 用户信息中的 roles 是否是一个非空数组
+          // 判断数据是否有效
           if (!data) {
             // 这里需要遵循ESLint规范，错误需要放在new Error('...')中
             // reject('getInfo: roles must be a non-null array !')
-            return reject(new Error('验证失败，请重新登录'))
+            reject(new Error('验证失败，请重新登录'))
           }
-          const { name, avatar } = data
+
+          const { name, avatar, roles, introduction } = data
+          // 判断返回的 用户信息中的 roles 是否是一个非空数组
+          if (!roles || roles.length <= 0) {
+            reject(new Error('角色权限必须是一个非空数组'))
+          }
+
+          // 设置权限
+          commit('SET_ROLES', roles)
           // 调用 SET_NAME 函数，设置 name
           commit('SET_NAME', name)
           // 调用 SET_AVATAR 函数，设置 avatar
           commit('SET_AVATAR', avatar)
+          // 设置权限介绍
+          commit('SET_INTRODUCTION', introduction)
           resolve(data)
         })
         .catch(error => {
@@ -87,15 +99,18 @@ const actions = {
   },
 
   // 登出
-  logout({ commit, state }) {
+  logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
       // 调用用户接口中的 logout 函数，清除相关信息
       logout(state.token)
         .then(() => {
-          // 调用auth.js中的 removeToken 函数，移除 token值
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          // 移除token
           removeToken()
           resetRouter()
-          commit('RESET_STATE')
+          // 重置访问的视图和缓存的视图
+          dispatch('tagsView/delAllViews', null, { root: true })
           resolve()
         })
         .catch(error => {
@@ -107,11 +122,34 @@ const actions = {
   // 移除 token
   resetToken({ commit }) {
     return new Promise(resolve => {
-      // 必须先移除 token
+      commit('SET_TOKEN', '')
+      commit('SET_ROLES', [])
       removeToken()
-      commit('RESET_STATE')
+      // 在调用方法初始化
       resolve()
     })
+  },
+
+  // 动态修改权限
+  async changeRoles({ commit, dispatch }, role) {
+    const token = role + '-token'
+
+    commit('SET_TOKEN', token)
+    setToken(token)
+
+    const { roles } = await dispatch('getInfo')
+
+    resetRouter()
+
+    // 基于角色生成可访问路线图
+    const accessRoutes = await dispatch('permission/generateRoutes', roles, {
+      root: true
+    })
+    // 动态添加可访问路由
+    router.addRoutes(accessRoutes)
+
+    // 重置访问的视图和缓存的视图
+    dispatch('tagsView/delAllViews', null, { root: true })
   }
 }
 
