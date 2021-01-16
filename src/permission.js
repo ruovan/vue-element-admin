@@ -78,5 +78,6 @@ router.beforeEach(async (to, from, next) => {
 })
 // 在路由跳转之后
 router.afterEach((to, from) => {
+  console.log('from:', from.path, 'to:', to.path)
   NProgress.done() // 结束Progress
 })

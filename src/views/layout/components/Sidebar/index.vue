@@ -26,20 +26,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem.vue'
-import variables from '@/styles/light.scss'
-// import variables from '@/styles/dark.scss'
+import variables from '@/styles/variables.scss'
 export default {
   name: 'Sidebar',
   components: {
     SidebarItem
   },
-  data() {
-    return {}
-  },
-  created() {
-    this.show()
-  },
-  methods: {},
   computed: {
     // TODO:注意，这里在进行权限设置后，要从permission_routes中获取路由，而不是routes了
     ...mapGetters(['permission_routes', 'sidebar']),

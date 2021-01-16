@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">
+  <el-card class="role-container">
     <el-button type="primary" @click="handleAddRole">New Role</el-button>
-
+    <!-- 权限表格数据 -->
     <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
       <el-table-column align="center" label="Role Key" width="220">
         <template slot-scope="scope">
@@ -29,7 +29,7 @@
         </template>
       </el-table-column>
     </el-table>
-
+    <!-- 添加角色对话框 -->
     <el-dialog
       :visible.sync="dialogVisible"
       :title="dialogType === 'edit' ? 'Edit Role' : 'New Role'"
@@ -65,7 +65,7 @@
         <el-button type="primary" @click="confirmRole">Confirm</el-button>
       </div>
     </el-dialog>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -291,7 +291,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-container {
+.role-container {
   .roles-table {
     margin-top: 30px;
   }

@@ -35,6 +35,7 @@ $sideBarWidth: 210px;
     z-index: 999;
     width: 100%;
     background-color: $navbar;
+    background-image: -webkit-linear-gradient(45deg, $navbar, #0b545d);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     // box-shadow: inset 0px -2px 0px 0px #b7b7ef;
 

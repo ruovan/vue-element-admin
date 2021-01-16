@@ -84,14 +84,6 @@ export default {
       redirect: undefined
     }
   },
-  watch: {
-    $route: {
-      handler: function(route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true
-    }
-  },
   methods: {
     // 登录事件
     onLogin() {
@@ -108,7 +100,7 @@ export default {
             .then(async () => {
               // 登录成功
               this.loading = false
-              await this.$router.push({ path: this.redirect || '/home' })
+              await this.$router.push('/')
               this.$notify.success({
                 title: '登录成功',
                 message: '当前账户：' + this.$store.getters.name,

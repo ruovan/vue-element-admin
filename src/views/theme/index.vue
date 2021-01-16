@@ -35,17 +35,6 @@
 </template>
 
 <script>
-import styleVariables from '@/styles/variables.js'
-// import { mapState } from 'vuex'
-// 解构颜色，注意顺序
-const {
-  menuText,
-  menuActiveText,
-  menuBg,
-  menuHover,
-  subMenuBg,
-  activeBg
-} = styleVariables
 export default {
   name: 'Theme',
   data() {
@@ -65,27 +54,27 @@ export default {
       defaultColor: [
         {
           name: 'menuText',
-          color: menuText
+          color: '#f8f8f8'
         },
         {
           name: 'menuActiveText',
-          color: menuActiveText
+          color: '#f8f8f8'
         },
         {
           name: 'menuBg',
-          color: menuBg
+          color: '#f8f8f8'
         },
         {
           name: 'menuHover',
-          color: menuHover
+          color: '#f8f8f8'
         },
         {
           name: 'subMenuBg',
-          color: subMenuBg
+          color: '#f8f8f8'
         },
         {
           name: 'activeBg',
-          color: activeBg
+          color: '#f8f8f8'
         }
       ],
       // 预设颜色
@@ -105,8 +94,6 @@ export default {
       colorIndex: 0
     }
   },
-  created() {},
-  mounted() {},
   methods: {
     // 获取当前点击项的数组下标，并复制给颜色序号
     getIndex(index) {

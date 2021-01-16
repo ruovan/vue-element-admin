@@ -39,9 +39,6 @@ export default {
   components: {
     NavbarLogo
   },
-  data() {
-    return {}
-  },
   methods: {
     // 退出登录
     async logout() {

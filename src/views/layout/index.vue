@@ -32,9 +32,6 @@ export default {
     Navbar
   },
   mixins: [ResizeMixin],
-  data() {
-    return {}
-  },
   methods: {
     // 点击外部遮罩层，隐藏侧边栏面板
     handleClickOutside() {

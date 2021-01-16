@@ -25,9 +25,6 @@ export default {
   components: {
     Breadcrumb
   },
-  data() {
-    return {}
-  },
   methods: {
     // 切换侧边栏状态
     toggleSideBar() {

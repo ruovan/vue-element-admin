@@ -59,18 +59,17 @@ export const constantRoutes = [
   },
   // 首页路由 /dashboard
   {
-    path: '/home',
+    path: '/',
     component: Layout,
-    name: 'Home',
-    alwaysShow: true,
+    name: 'Dashboard',
+    // alwaysShow: true,
     redirect: '/dashboard',
-    meta: { title: '首页', icon: 'el-icon-s-home' },
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/home/dashboard'),
-        meta: { title: '数据展示', icon: 'el-icon-house' }
+        component: () => import('@/views/dashboard'),
+        meta: { title: '首页', icon: 'el-icon-s-home' }
       }
     ]
   },
@@ -132,16 +131,6 @@ export const asyncRoutes = [
       roles: ['admin', 'editor']
     },
     children: [
-      {
-        path: 'page',
-        component: () => import('@/views/permission/page'),
-        name: 'PagePermission',
-        meta: {
-          title: '页面权限',
-          icon: 'el-icon-s-flag',
-          roles: ['admin']
-        }
-      },
       {
         path: 'directive',
         component: () => import('@/views/permission/directive'),
@@ -223,12 +212,6 @@ export const asyncRoutes = [
         meta: { title: '返回顶部', icon: 'el-icon-top' }
       },
       {
-        path: 'sticky',
-        name: 'Sticky',
-        component: () => import('@/views/example/sticky'),
-        meta: { title: '粘性布局', icon: 'el-icon-hot-water' }
-      },
-      {
         path: 'dnd-list',
         name: 'DndList',
         component: () => import('@/views/example/dnd-list'),
@@ -239,6 +222,12 @@ export const asyncRoutes = [
         name: 'SplitPane',
         component: () => import('@/views/example/split-pane'),
         meta: { title: '分割面板', icon: 'el-icon-refrigerator' }
+      },
+      {
+        path: 'todo-list',
+        name: 'TodoList',
+        component: () => import('@/views/example/todo-list'),
+        meta: { title: '待办事项', icon: 'el-icon-editor' }
       }
     ]
   },

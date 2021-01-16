@@ -109,8 +109,6 @@ const actions = {
           // 移除token
           removeToken()
           resetRouter()
-          // 重置访问的视图和缓存的视图
-          dispatch('tagsView/delAllViews', null, { root: true })
           resolve()
         })
         .catch(error => {
@@ -147,9 +145,6 @@ const actions = {
     })
     // 动态添加可访问路由
     router.addRoutes(accessRoutes)
-
-    // 重置访问的视图和缓存的视图
-    dispatch('tagsView/delAllViews', null, { root: true })
   }
 }
 
